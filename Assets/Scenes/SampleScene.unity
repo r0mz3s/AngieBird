@@ -423,6 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e87a5148f2336744a5e08ebf01c7ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
+  damageThreshold: 0.2
 --- !u!50 &511503553
 Rigidbody2D:
   serializedVersion: 5
@@ -2327,7 +2329,7 @@ MonoBehaviour:
   rightStartPosition: {fileID: 585742886}
   centerPosition: {fileID: 859490922}
   idlePosition: {fileID: 1059499910}
-  maxDistance: 5
+  maxDistance: 8
   shotForce: 8
   timeBetweenBirdRespawns: 2
   slingshotArea: {fileID: 142587261}
