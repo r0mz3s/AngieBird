@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "friendlyName": "Pixel 7",
+  "systemInfo": {
+    "operatingSystem": "Android 13",
+    "systemMemorySize": 8192,
+    "processorType": "Google Tensor G2",
+    "graphicsDeviceName": "Mali-G710",
+    "graphicsMemorySize": 512
+  },
+  "screens": [
+    {
+      "width": 1080,
+      "height": 2400,
+      "dpi": 416,
+      "orientation": "portrait",
+      "screenOrientation": "Portrait",
+      "renderingWidth": 1080,
+      "renderingHeight": 2400,
+      "screenPhysicalSizeInInches": 6.3
+    }
+  ]
+}

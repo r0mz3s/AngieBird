@@ -40,18 +40,18 @@ public class SlingShotHandler : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && slingshotArea.IsWithinSlingshotArea())
+        if (InputManager.WasLeftMouseButtonPressed && slingshotArea.IsWithinSlingshotArea())
         {
             clickedWithinArea = true;
         }
 
-        if (Mouse.current.leftButton.isPressed && clickedWithinArea && birdOnSlinghot)
+        if (InputManager.IsLeftMousePressed && clickedWithinArea && birdOnSlinghot)
         {
             DrawSlingShot();
             PositionAndRotateAngieBird();
         }
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame && birdOnSlinghot)
+        if (InputManager.WasLeftMouseButtonReleased && birdOnSlinghot && clickedWithinArea)
         {
             if (GameManager.Instance.HasEnoughShots())
             {
@@ -73,7 +73,7 @@ public class SlingShotHandler : MonoBehaviour
 
     private void DrawSlingShot()
     {
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(InputManager.MousePosition);
         slingShotLinesPosition = centerPosition.position + Vector3.ClampMagnitude(touchPosition - centerPosition.position, maxDistance);
         SetLines(slingShotLinesPosition);
         direction = (Vector2)centerPosition.position - slingShotLinesPosition;

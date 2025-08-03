@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Baddie : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 3f;
-    [SerializeField] private float damageThreshold = 0.2f;
+    [SerializeField] private float maxHealth = 8f;
+    [SerializeField] private float damageThreshold = 1f;
     private float currentHealth;
 
     private void Awake()
@@ -11,7 +11,7 @@ public class Baddie : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void DamageBaddi(float damageAmount)
+    public void DamageBaddie(float damageAmount)
     { 
         currentHealth -= damageAmount;
         if (currentHealth <= 0f)
@@ -22,6 +22,7 @@ public class Baddie : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.RemoveBaddie(this);
         Destroy(gameObject);
     }
 
@@ -30,7 +31,7 @@ public class Baddie : MonoBehaviour
         float impactVelocity = collision.relativeVelocity.magnitude;
         if (impactVelocity > damageThreshold)
         {
-            DamageBaddi(impactVelocity);
+            DamageBaddie(impactVelocity);
         }
     }
 }
