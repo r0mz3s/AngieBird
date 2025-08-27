@@ -12,6 +12,7 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private Transform rightStartPosition;
     [SerializeField] private Transform centerPosition;
     [SerializeField] private Transform idlePosition;
+    [SerializeField] private Transform elasticTransform;
     [Header("Slingshot Stats")]
     [SerializeField] private float maxDistance = 3.5f;
     [SerializeField] private float shotForce = 5f;
@@ -59,7 +60,7 @@ public class SlingShotHandler : MonoBehaviour
                 birdOnSlinghot = false;
                 spawnedAngieBird.LaunchBird(direction, shotForce);
                 GameManager.Instance.UseShot();
-                SetLines(centerPosition.position);
+                AnimateSlingShot();
                 if (GameManager.Instance.HasEnoughShots()) 
                 { 
                     StartCoroutine(SpawnAngieBirdAfterTime(timeBetweenBirdRespawns));
@@ -125,4 +126,12 @@ public class SlingShotHandler : MonoBehaviour
 
     #endregion
 
+    #region ======= Animate SlingShot ========
+
+    private void AnimateSlingShot() 
+    {
+    
+    }
+
+    #endregion
 }
