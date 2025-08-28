@@ -2628,9 +2628,11 @@ MonoBehaviour:
   rightStartPosition: {fileID: 585742886}
   centerPosition: {fileID: 859490922}
   idlePosition: {fileID: 1059499910}
+  elasticTransform: {fileID: 264683217}
   maxDistance: 7
   shotForce: 8
   timeBetweenBirdRespawns: 2
+  elasticDivider: 17
   slingshotArea: {fileID: 142587261}
   angieBirdPrefab: {fileID: 1533624606853849174, guid: a7a0a4875e4072d4eb6480603018346d, type: 3}
   angieBirdPositionOffset: 0.275

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class SlingShotHandler : MonoBehaviour
 {
@@ -14,14 +15,15 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private Transform idlePosition;
     [SerializeField] private Transform elasticTransform;
     [Header("Slingshot Stats")]
-    [SerializeField] private float maxDistance = 3.5f;
-    [SerializeField] private float shotForce = 5f;
+    [SerializeField] private float maxDistance = 7f;
+    [SerializeField] private float shotForce = 8f;
     [SerializeField] private float timeBetweenBirdRespawns = 2f;
+    [SerializeField] private float elasticDivider = 17f;
     [Header("Scripts")]
     [SerializeField] private SlingShotArea slingshotArea;
     [Header("Bird")]
     [SerializeField] private AngieBird angieBirdPrefab;
-    [SerializeField] private float angieBirdPositionOffset = 2f;
+    [SerializeField] private float angieBirdPositionOffset = 0.275f;
 
     private Vector2 slingShotLinesPosition;
     private bool clickedWithinArea;
@@ -129,8 +131,23 @@ public class SlingShotHandler : MonoBehaviour
     #region ======= Animate SlingShot ========
 
     private void AnimateSlingShot() 
+    {    
+        elasticTransform.position = leftLineRenderer.GetPosition(0);
+        float dist = Vector2.Distance(elasticTransform.position, centerPosition.position);
+        float time = dist / elasticDivider;
+        elasticTransform.DOMove(centerPosition.position, time);
+        StartCoroutine(AnimateSlingShotLines(elasticTransform, time));
+    }
+
+    private IEnumerator AnimateSlingShotLines(Transform trans, float time)
     {
-    
+        float elapsedTime = 0f;
+        while (elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+            SetLines(trans.position);
+            yield return null;
+        }
     }
 
     #endregion
